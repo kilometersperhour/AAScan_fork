@@ -36,7 +36,7 @@ socketSendCommands = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socketSendCommands.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 socketSendCommands.bind((serverAddress,serverPort))
 socketSendCommands.listen(1)
-print("Sever {ip} opened at port {port}\n".format(ip=serverAddress,port=serverPort))
+print("Server {ip} opened at port {port}\n".format(ip=serverAddress,port=serverPort))
 (connection, address) = socketSendCommands.accept()
 print("Connection established {addr}\n".format(addr=address))
 
@@ -46,10 +46,10 @@ try:
         if dataReceived!="":
             if dataReceived=="chez":
                 path = photoStoragePath
-                path += str(i)
-                path += '.png'
+                path += str(f{i:04d})
+                path += '.jpg'
                 droid.cameraCapturePicture(path, True)
-                print("{count} photos taken!".format(count=i))
+                print(""{count }" photos taken!".format(count=i))
                 i=i+1
             if dataReceived=="quit":
                 break
